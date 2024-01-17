@@ -4,16 +4,16 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local alpha = require("alpha")
-		local dashboard = require("alpha.themes.dashboard")
+		local dashboard = require("alpha.themes.mydash")
 
 		-- Set header
 
-		local header_highlight = "MoonflyWhite"
+		local header_highlight = "MoonflySky"
 		local button_highlight = "MoonflySky"
 
 		dashboard.section.header.val = {
 			"                                       ",
-			"	 ███╗   ███╗ █████╗ ███████╗███████╗  ",
+			"  ███╗   ███╗ █████╗ ███████╗███████╗  ",
 			"  ████╗ ████║██╔══██╗╚══███╔╝██╔════╝  ",
 			"  ██╔████╔██║███████║  ███╔╝ █████╗    ",
 			"  ██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝    ",
