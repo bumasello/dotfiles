@@ -12,9 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "bmasello.plugins" }, { import = "bmasello.plugins.lsp" } }, {
-	install = {
-		colorscheme = { "moonfly" },
-	},
 	checker = {
 		enabled = true,
 		notify = false,

@@ -1,10 +1,20 @@
 return {
+	--{
+	--	"bluz71/vim-moonfly-colors",
+	--	priority = 1000, -- make sure to load this before all the other start plugins
+	--	config = function()
+	--		-- load the colorscheme here
+	--		vim.cmd([[colorscheme moonfly]])
+	--	end,
+	--},
 	{
-		"bluz71/vim-moonfly-colors",
-		priority = 1000, -- make sure to load this before all the other start plugins
+		"svrana/neosolarized.nvim",
+		dependencies = { "tjdevries/colorbuddy.nvim" },
 		config = function()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme moonfly]])
+			require("neosolarized").setup({
+				comment_italics = true,
+				background_set = true,
+			})
 		end,
 	},
 	--{
