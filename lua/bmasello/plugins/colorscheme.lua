@@ -26,7 +26,7 @@ return {
 		config = function()
 			require("neosolarized").setup({
 				comment_italics = true,
-				background_set = false,
+				background_set = true,
 			})
 			vim.cmd([[colorscheme neosolarized]])
 		end,
