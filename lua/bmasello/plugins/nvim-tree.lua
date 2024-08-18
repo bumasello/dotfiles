@@ -48,25 +48,19 @@ return {
 			git = {
 				ignore = false,
 			},
-			on_attach = function(bufnr)
-				local api = require("nvim-tree.api")
-				local function opts(desc)
-					return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-				end
-				api.config.mappings.default_on_attach(bufnr)
-
-				vim.keymap.set("n", "e", "", { buffer = bufnr })
-				vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts("Up"))
-				vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-			end,
 		})
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
-		keymap.set("n", "ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-		keymap.set("n", "ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-		keymap.set("n", "ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-		keymap.set("n", "er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+		keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+		keymap.set(
+			"n",
+			"<leader>ef",
+			"<cmd>NvimTreeFindFileToggle<CR>",
+			{ desc = "Toggle file explorer on current file" }
+		) -- toggle file explorer on current file
+		keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 	end,
 }

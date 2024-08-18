@@ -9,7 +9,7 @@ local keymap = vim.keymap -- for conciseness
 -- use jk to exit insert mode
 --keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-keymap.set("n", "tc", ":!", {})
+keymap.set("n", "tc", ":!", { noremap = true, silent = true })
 -- keymap.set("v", "<C-q>", "<C-v>", {})
 keymap.set("i", "<C-]>", "<Esc>", { noremap = true, silent = true })
 
