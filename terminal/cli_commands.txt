@@ -1,0 +1,38 @@
+-- Resolução 
+xrandr
+
+-- Ajustar resolução e hz
+xrandr --output DP-1 --mode 1920x1080 --rate 164
+
+-- Listar dispositivos de audio
+pactl list short sinks
+
+-- Selecionar dispositivos de audio
+pactl set-default-sink <sink-id>
+
+-- Listar dispositivos de mic
+pactl list short sources
+
+-- Selecionar dispositivos de mic
+pactl set-default-source <source-id>
+
+RESOLVENDO O PROBLEMA DO CEDILHA
+----------------------------------------------
+-- Verificar e instalar o Locale pt_BR.UTF-8
+locale -a | grep pt_BR.UTF-8
+-- Se não estiver listado, você pode gerar o locale com
+sudo locale-gen pt_BR.UTF-8
+-- Configurar o locale do sistema
+sudo localectl set-locale LANG=pt_BR.UTF-8
+-- Configurar o keymap do x11:
+sudo localectl set-keymap us
+sudo localectl set-x11-keymap us pc105+inet
+sudo localectl set-x11-keymap us pc105+inet "" terminate:ctrl_alt_bksp
+
+-- Criar o arquivo .XCompose
+-- Depois de criado, adicione essas linhas
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<dead_acute> <C> : "Ç" Ccedilla # LATIN CAPITAL LETTER C WITH CEDILLA
+<dead_acute> <c> : "ç" ccedilla # LATIN SMALL LETTER C WITH CEDILLA
+
