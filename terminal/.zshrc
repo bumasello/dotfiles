@@ -89,6 +89,10 @@ alias tk='tmux kill-session -t'
 alias ta='tmux attach-session -t'
 alias td='tmux detach'
 alias tl='tmux ls'
+alias ga='git add'
+alias gp='git push'
+alias gc='git commit'
+alias gs='git status'
 
 # Shell Integrations
 eval "$(fzf --zsh)"
