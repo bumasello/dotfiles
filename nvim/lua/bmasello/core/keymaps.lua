@@ -22,7 +22,7 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "dw", 'vb"_d')
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set("n", "<c-a>", "gg<S-v>G")
 
 -- Lazy
 keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>")

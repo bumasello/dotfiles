@@ -1,5 +1,6 @@
 # Theme
-theme = Solarized Dark Higher Contrast
+# theme = Solarized Dark Higher Contrast
+config-file = ghostty-theme
 cursor-style = block
 font-family = JetBrainsMonoNL Nerd Font
 window-padding-x = 8
