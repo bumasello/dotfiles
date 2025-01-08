@@ -1,0 +1,15 @@
+# Theme
+theme = Solarized Dark Higher Contrast
+cursor-style = block
+font-family = JetBrainsMonoNL Nerd Font
+window-padding-x = 8
+window-padding-y = 8
+
+# Option
+mouse-hide-while-typing = true
+macos-titlebar-style = hidden
+window-decoration = false
+
+# Keybind
+keybind = super+comma=open_config
+keybind = super+shift+comma=reload_config

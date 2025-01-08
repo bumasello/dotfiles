@@ -1,0 +1,82 @@
+/* Define Neosolarized Dark Colors */
+@define-color background rgb(0, 43, 54);  /* backgroundCol */
+@define-color base rgb(0, 83, 108);  /* backgroundCol */
+@define-color text rgb(253, 246, 227);  /* color9 */
+@define-color mauve rgb(211, 54, 130);  /* color5 */
+@define-color red rgb(220, 50, 47);  /* color1 */
+@define-color lavender rgb(38, 139, 210);  /* color4 */
+@define-color blue rgb(38, 139, 210);  /* color4 */
+@define-color accent rgb(38, 139, 210);
+@define-color txt rgb(253, 246, 227);
+@define-color bg rgb(0, 43, 54);
+@define-color bg2 rgb(0, 83, 108);
+
+* {
+    font-family: 'JetBrainsMono NL Nerd Font';
+    font-size: 14px;
+ }
+
+ /* Window */
+ window {
+    margin: 0px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: @bg2;
+ }
+
+ /* Inner Box */
+ #inner-box {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: @bg;
+ }
+
+ /* Outer Box */
+ #outer-box {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    background-color: @bg;
+    border-radius: 5px;
+ }
+
+ /* Scroll */
+ #scroll {
+    margin: 0px;
+    padding: 10px;
+    border: none;
+ }
+
+ /* Input */
+ #input {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    color: @txt;
+    background-color: @bg;
+    border: 2px solid @mauve;
+ }
+
+ /* Text */
+ #text {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    color: @txt;
+ }
+
+ /* Selected Entry */
+ #entry:selected {
+   background-color: @bg;
+   outline: 2px solid @mauve;
+ }
+
+ #entry:selected #text {
+    color: @txt;
+ }
+ 
+ image {
+	 margin-left: 10px
+ }

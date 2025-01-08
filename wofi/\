@@ -1,0 +1,125 @@
+/* Define Neosolarized Dark Colors */
+@define-color background rgb(0, 43, 54);  /* backgroundCol */
+@define-color base rgb(0, 83, 108);  /* backgroundCol */
+@define-color text rgb(253, 246, 227);  /* color9 */
+@define-color mauve rgb(211, 54, 130);  /* color5 */
+@define-color red rgb(220, 50, 47);  /* color1 */
+@define-color lavender rgb(38, 139, 210);  /* color4 */
+@define-color blue rgb(38, 139, 210);  /* color4 */
+
+* {
+    font-family: 'JetBrainsMono NL Nerd Font', monospace;
+    font-size: 17px;
+    outline: none;
+    border: none;
+}
+
+window {
+    all: unset;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: alpha(@background, .5);
+}
+
+/* Slide In */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Inner Box */
+#inner-box {
+    margin: 2px;
+    padding: 5px;
+    border: none;
+    background-color: @backgroud;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+/* Outer Box */
+#outer-box {
+    border-radius: .5em;
+    border: none;
+    background-color: @base;
+}
+
+/* Scroll */
+#scroll {
+    margin: 0px;
+    padding: 30px;
+    border: none;
+    background-color: @base;
+}
+
+/* Input */
+#input {
+    all: unset;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    border: none;
+    outline: none;
+    color: @text;
+    background-color: @base;
+    animation: slideIn 1s ease-in-out;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+#input image {
+    border: none;
+    color: @red;
+    outline: none;
+}
+
+#input * {
+    border: none;
+    outline: none;
+}
+
+#input:focus {
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: @text;
+    outline: none;
+}
+
+/* Entry */
+#entry {
+    background-color: @base;
+    border: none;
+}
+
+#entry arrow {
+    border: none;
+    color: @lavender;
+}
+
+/* Selected Entry */
+#entry:selected {
+    box-shadow: 1px 1px 5px rgba(255, 255, 255, .03);
+    border: none;
+    border-radius: 20px;
+}
+
+#entry:selected #text {
+    color: @mauve;
+}
+
+#entry:drop(active) {
+    background-color: @lavender !important;
+    animation: fadeIn 1s ease-in-out;
+}
+
