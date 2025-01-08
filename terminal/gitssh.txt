@@ -1,0 +1,60 @@
+1. Gerar uma nova chave SSH
+
+	Se quiser criar uma nova chave SSH, use o seguinte comando no terminal:
+
+	ssh-keygen -t ed25519 -C "seu_email@example.com"
+
+	    Explicação:
+		-t ed25519: Especifica o tipo de chave (recomendado pelo GitHub por ser mais seguro e rápido).
+		-C "seu_email@example.com": Adiciona um comentário com o seu e-mail para identificação.
+
+	Se o seu sistema não suportar ed25519, use:
+
+	ssh-keygen -t rsa -b 4096 -C "seu_email@example.com"
+
+2. Salvar a chave
+
+	Quando for solicitado:
+
+	    Pressione Enter para aceitar o caminho padrão (~/.ssh/id_ed25519).
+	    Digite uma senha forte (opcional) ou pressione Enter para continuar sem senha.
+
+3. Adicionar a chave SSH ao ssh-agent
+
+	Inicie o ssh-agent:
+
+	eval "$(ssh-agent -s)"
+
+	Adicione a nova chave ao agente:
+
+	ssh-add ~/.ssh/id_ed25519
+
+	(Substitua id_ed25519 pelo nome da chave, se você usou outro.)
+
+4. Copiar a chave SSH
+
+	Agora copie o conteúdo da sua chave pública:
+
+	cat ~/.ssh/id_ed25519.pub
+
+	Ou, para copiar diretamente no clipboard (Linux com xclip):
+
+	xclip -sel clip < ~/.ssh/id_ed25519.pub
+
+5. Adicionar a chave ao GitHub
+
+	 Acesse sua conta do GitHub e vá para Settings > SSH and GPG keys.
+	 Clique em New SSH Key.
+	 Dê um título (ex: "Meu PC") e cole a chave no campo.
+	 Clique em Add SSH Key.
+
+6. Testar a conexão
+
+	Verifique se a conexão está funcionando:
+
+	ssh -T git@github.com
+
+	Se tudo estiver certo, você verá uma mensagem como:
+
+	Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+
