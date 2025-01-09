@@ -40,11 +40,15 @@ keymap.set("n", "<S-Tab>", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) -- 
 keymap.set("n", "tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- Insert Mode
-keymap.set("i", "<C-]>", "<Esc>", { noremap = true, silent = true })
+-- keymap.set("i", "<C-]>", "<Esc>", { noremap = true, silent = true })
 
+-- Control + Backspace to delete word
 -- keymap.set("i", "<C-Backspace>", "<Esc>vbc")
--- keymap.set("i", "<C-Backspace>", "^W")
-keymap.set("i", "<C-h>", "<C-w>")
+keymap.set("i", "<C-Backspace>", "<C-w>")
+-- keymap.set("i", "<C-h>", "<c-w>")
+
+-- Disabling <C-o>
+keymap.set("n", "<C-o>", "<Nop>")
 
 -- use jk to exit insert mode
 --keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
