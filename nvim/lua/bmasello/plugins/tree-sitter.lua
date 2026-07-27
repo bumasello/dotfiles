@@ -12,8 +12,21 @@ return {
 			"elixir",
 			"heex",
 			"javascript",
+			"typescript",
+			"tsx",
+			"python",
+			"rust",
 			"html",
 			"pug",
+			"css",
+			"json",
+			"yaml",
+			"toml",
+			"bash",
+			"markdown",
+			"markdown_inline",
+			"graphql",
+			"svelte",
 		}
 
 		require("nvim-treesitter").setup()
