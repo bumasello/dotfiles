@@ -11,7 +11,6 @@ return {
 			javascriptreact = { "biomejs", "eslint_d" },
 			typescriptreact = { "biomejs", "eslint_d", "eslint" },
 			svelte = { "eslint_d" },
-			python = { "pylint" },
 		}
 
 		local eslintd = lint.linters.eslint_d
