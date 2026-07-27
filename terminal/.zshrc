@@ -91,3 +91,8 @@ export LC_TELEPHONE=pt_BR.UTF-8
 export LC_MEASUREMENT=pt_BR.UTF-8
 export LC_IDENTIFICATION="pt_BR.UTF-8"
 export LC_ALL=
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
