@@ -104,3 +104,4 @@ eval "$(pyenv init -)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.claude/bin:$HOME/.local/bin:$HOME/.bun/bin:$PATH"
+alias win='cd ~/winhome'
