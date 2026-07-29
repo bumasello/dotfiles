@@ -1,7 +1,12 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [],
+    "actions": [
+        {
+            "command": { "action": "sendInput", "input": "\u001b[13;2u" },
+            "keys": "shift+enter"
+        }
+    ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{df1094e9-39df-5020-9648-6edcbccfaf9e}",
