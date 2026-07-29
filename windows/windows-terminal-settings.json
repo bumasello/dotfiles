@@ -3,15 +3,17 @@
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": [
         {
-            "command": { "action": "sendInput", "input": "\u001b[13;2u" },
-            "keys": "shift+enter"
+            "command": {
+                "action": "sendInput",
+                "input": "\u001b[13;2u"
+            },
+            "id": "User.ShiftEnterCSIu"
         }
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{df1094e9-39df-5020-9648-6edcbccfaf9e}",
-    "keybindings": 
-    [
+    "keybindings": [
         {
             "id": "Terminal.CopyToClipboard",
             "keys": "ctrl+c"
@@ -23,23 +25,23 @@
         {
             "id": "Terminal.DuplicatePaneAuto",
             "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.ShiftEnterCSIu",
+            "keys": "shift+enter"
         }
     ],
     "launchMode": "focus",
-    "newTabMenu": 
-    [
+    "newTabMenu": [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
-    {
-        "defaults": 
-        {
+    "profiles": {
+        "defaults": {
             "colorScheme": "Solarized Dark"
         },
-        "list": 
-        [
+        "list": [
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -59,8 +61,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "font": 
-                {
+                "font": {
                     "face": "JetBrainsMono Nerd Font",
                     "size": 11
                 },

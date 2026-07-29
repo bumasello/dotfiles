@@ -105,3 +105,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.claude/bin:$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 alias win='cd ~/winhome'
+
+# Navegação por palavra com Ctrl+Seta
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
