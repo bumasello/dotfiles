@@ -109,3 +109,6 @@ alias win='cd ~/winhome'
 # Navegação por palavra com Ctrl+Seta
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
+
+# Workaround: força o Claude Code a reconhecer suporte ao protocolo Kitty
+alias claude='TERM_PROGRAM=WezTerm command claude'
