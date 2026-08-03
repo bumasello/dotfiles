@@ -39,6 +39,12 @@ keymap.set("n", "<Tab>", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to
 keymap.set("n", "<S-Tab>", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+-- Clipboard do Windows sob demanda (evita lentidão do unnamedplus)
+keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copiar para clipboard do Windows" })
+keymap.set("n", "<leader>Y", '"+Y', { desc = "Copiar linha para clipboard do Windows" })
+keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Colar do clipboard do Windows" })
+keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Colar do clipboard do Windows (antes)" })
+
 -- Insert Mode
 -- keymap.set("i", "<C-]>", "<Esc>", { noremap = true, silent = true })
 

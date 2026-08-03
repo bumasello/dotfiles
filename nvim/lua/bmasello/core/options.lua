@@ -40,4 +40,4 @@ if vim.fn.has("wsl") == 1 then
     cache_enabled = 0,
   }
 end
-opt.clipboard = "unnamedplus"
+
