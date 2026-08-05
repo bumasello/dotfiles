@@ -53,19 +53,19 @@ return {
 		})
 		-- Ícones de diagnóstico na coluna lateral
 		vim.diagnostic.config({
-	virtual_text = {
-		prefix = "●",
-		spacing = 4,
-	},
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = "󰠠 ",
-			[vim.diagnostic.severity.INFO] = " ",
-		},
-	},
-})
+			virtual_text = {
+				prefix = "●",
+				spacing = 4,
+			},
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+		})
 		-- Capabilities aplicadas a todo servidor
 		vim.lsp.config("*", {
 			capabilities = cmp_nvim_lsp.default_capabilities(),
@@ -102,7 +102,17 @@ return {
 				},
 			},
 		})
-
+		vim.lsp.config("pyright", {
+			settings = {
+				python = {
+					analysis = {
+						useLibraryCodeForTypes = false,
+						diagnosticMode = "openFilesOnly",
+						autoSearchPaths = true,
+					},
+				},
+			},
+		})
 		vim.lsp.config("rust_analyzer", {
 			settings = {
 				["rust-analyzer"] = {
