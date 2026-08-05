@@ -112,3 +112,7 @@ bindkey '^[[1;5D' backward-word
 
 # Workaround: força o Claude Code a reconhecer suporte ao protocolo Kitty
 alias claude='TERM_PROGRAM=WezTerm command claude'
+
+# Qwen Code PATH block begin
+export PATH='/home/maze/.local/bin':$PATH
+# Qwen Code PATH block end
