@@ -116,3 +116,4 @@ alias claude='TERM_PROGRAM=WezTerm command claude'
 # Qwen Code PATH block begin
 export PATH='/home/maze/.local/bin':$PATH
 # Qwen Code PATH block end
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
