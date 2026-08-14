@@ -117,3 +117,4 @@ alias claude='TERM_PROGRAM=WezTerm command claude'
 export PATH='/home/maze/.local/bin':$PATH
 # Qwen Code PATH block end
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export CLAUDE_CODE_DISABLE_MOUSE_CLICKS=1
