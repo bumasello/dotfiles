@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,7 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 PATH="$HOME/.go/bin:$PATH"
-eval "$(fnm env --use-on-cd --shell zsh)"
 export ORACLE_HOME=/opt/oracle/instantclient_23_5
 export LD_LIBRARY_PATH=$ORACLE_HOME:$LD_LIBRARY_PATH
 export PATH=$ORACLE_HOME:$PATH
@@ -116,3 +116,6 @@ export PATH='/home/maze/.local/bin':$PATH
 # Qwen Code PATH block end
 
 export DISABLE_AUTOUPDATER=1
+eval "$(fnm env --use-on-cd --shell zsh --log-level quiet)"
+
+zprof
