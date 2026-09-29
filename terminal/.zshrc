@@ -5,9 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 PATH="$HOME/.go/bin:$PATH"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-export PATH="$HOME/.nvm/versions/node/v20.14.0/bin/:$PATH"
+eval "$(fnm env --use-on-cd --shell zsh)"
 export ORACLE_HOME=/opt/oracle/instantclient_23_5
 export LD_LIBRARY_PATH=$ORACLE_HOME:$LD_LIBRARY_PATH
 export PATH=$ORACLE_HOME:$PATH
@@ -116,5 +114,5 @@ alias claude='TERM_PROGRAM=WezTerm command claude'
 # Qwen Code PATH block begin
 export PATH='/home/maze/.local/bin':$PATH
 # Qwen Code PATH block end
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export DISABLE_AUTOUPDATER=1
