@@ -119,3 +119,4 @@ export DISABLE_AUTOUPDATER=1
 eval "$(fnm env --use-on-cd --shell zsh --log-level quiet)"
 
 zprof
+export PATH="$HOME/.npm-global/bin:$PATH"
