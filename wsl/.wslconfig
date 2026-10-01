@@ -1,0 +1,6 @@
+[wsl2]
+nestedVirtualization=false
+vmIdleTimeout=-1
+
+[general]
+instanceIdleTimeout=-1
