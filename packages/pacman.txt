@@ -1,4 +1,5 @@
 alsa-lib
+aspnet-runtime
 base
 base-devel
 dotnet-sdk

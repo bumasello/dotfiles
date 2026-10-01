@@ -35,6 +35,9 @@ return {
 				"rust_analyzer",
 			},
 			automatic_installation = true,
+			-- o roslyn.nvim já sobe o servidor de C#; sem isto o mason-lspconfig sobe
+			-- uma segunda cópia como roslyn_ls e todo diagnóstico aparece em dobro
+			automatic_enable = { exclude = { "roslyn_ls" } },
 		})
 
 		mason_tool_installer.setup({
@@ -46,6 +49,7 @@ return {
 				-- C#: o servidor do roslyn.nvim não tem nome no lspconfig, por isso fica aqui
 				"roslyn-language-server",
 				"csharpier",
+				"netcoredbg",
 			},
 		})
 	end,

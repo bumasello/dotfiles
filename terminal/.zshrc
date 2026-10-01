@@ -118,3 +118,6 @@ export DISABLE_AUTOUPDATER=1
 eval "$(fnm env --use-on-cd --shell zsh --log-level quiet)"
 
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+# ferramentas instaladas com `dotnet tool install -g` (o servidor do easy-dotnet.nvim, por ex.)
+export PATH="$HOME/.dotnet/tools:$PATH"
