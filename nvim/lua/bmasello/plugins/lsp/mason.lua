@@ -43,6 +43,9 @@ return {
 				"prettier",
 				"stylua",
 				"eslint_d",
+				-- C#: o servidor do roslyn.nvim não tem nome no lspconfig, por isso fica aqui
+				"roslyn-language-server",
+				"csharpier",
 			},
 		})
 	end,

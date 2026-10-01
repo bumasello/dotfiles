@@ -16,6 +16,7 @@ return {
 			"tsx",
 			"python",
 			"rust",
+			"c_sharp",
 			"html",
 			"pug",
 			"css",
@@ -32,8 +33,14 @@ return {
 		require("nvim-treesitter").setup()
 		require("nvim-treesitter").install(ensure_installed)
 
+		-- nome do parser nem sempre é o filetype (c_sharp → cs, tsx → typescriptreact)
+		local filetypes = {}
+		for _, lang in ipairs(ensure_installed) do
+			vim.list_extend(filetypes, vim.treesitter.language.get_filetypes(lang))
+		end
+
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = ensure_installed,
+			pattern = filetypes,
 			callback = function()
 				vim.treesitter.start()
 				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

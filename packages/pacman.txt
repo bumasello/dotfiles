@@ -1,6 +1,7 @@
 alsa-lib
 base
 base-devel
+dotnet-sdk
 eza
 fd
 fnm
