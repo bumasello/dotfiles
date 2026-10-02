@@ -41,9 +41,14 @@ return {
 
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = filetypes,
-			callback = function()
+			callback = function(ev)
 				vim.treesitter.start()
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				-- só troca a indentação se o parser souber indentar; c_sharp não tem
+				-- indents.scm e jogava toda linha nova na coluna 0
+				local lang = vim.treesitter.language.get_lang(vim.bo[ev.buf].filetype)
+				if lang and vim.treesitter.query.get(lang, "indents") then
+					vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
 			end,
 		})
 	end,
