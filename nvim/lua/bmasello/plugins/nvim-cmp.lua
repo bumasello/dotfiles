@@ -63,7 +63,17 @@ return {
 		-- Um item de LSP pode trazer um comando que é do cliente, não do servidor
 		-- (ex.: o `override` do Roslyn, que escreve o método inteiro). O cmp-nvim-lsp
 		-- só sabe mandar comando pro servidor, então o que tem tratador local roda aqui.
-		-- O schedule deixa o autopairs pôr o "()" antes; o tratador do roslyn.nvim limpa.
+		-- O autopairs põe o "(" por feedkeys depois do confirm, então o comando também
+		-- entra pela fila de teclas (via <Plug>) pra rodar depois dele, e não no meio.
+		local pending = nil
+		vim.keymap.set("i", "<Plug>(cmp-local-command)", function()
+			local run = pending
+			pending = nil
+			if run then
+				run()
+			end
+		end)
+
 		cmp.event:on("confirm_done", function(evt)
 			local command = evt.entry:get_completion_item().command
 			local client = evt.entry.source.source.client
@@ -78,7 +88,7 @@ return {
 			end
 
 			local bufnr = vim.api.nvim_get_current_buf()
-			vim.schedule(function()
+			pending = function()
 				-- O Roslyn calcula o trecho a substituir com o que estava digitado na hora
 				-- (ex.: "override ToS"), mas o cmp já apagou o "ToS" ao confirmar. Sem
 				-- encurtar o fim até o tamanho real da linha, o nvim_buf_set_text recusa.
@@ -92,6 +102,10 @@ return {
 				end
 
 				client:exec_cmd(command, { bufnr = bufnr })
+			end
+			vim.schedule(function()
+				local keys = vim.api.nvim_replace_termcodes("<Plug>(cmp-local-command)", true, false, true)
+				vim.api.nvim_feedkeys(keys, "m", false)
 			end)
 		end)
 	end,
