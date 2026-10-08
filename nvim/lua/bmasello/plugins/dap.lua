@@ -30,7 +30,8 @@ return {
 		{ "<F11>", function() require("dap").step_into() end, desc = "Debug: entrar no método" },
 		{ "<S-F11>", function() require("dap").step_out() end, desc = "Debug: sair do método" },
 		{ "<F23>", function() require("dap").step_out() end, desc = "Debug: sair do método (Shift+F11 em alguns terminais)" },
-		{ "<leader>du", function() require("dapui").toggle() end, desc = "Debug: abrir/fechar painéis" },
+		-- <leader>u e não <leader>du: com "du" o <leader>d (aviso da linha) esperava 1s pelo "u"
+		{ "<leader>u", function() require("dapui").toggle() end, desc = "Debug: abrir/fechar painéis" },
 	},
 	config = function()
 		local dap = require("dap")
