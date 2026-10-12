@@ -66,22 +66,58 @@ local function lado_oposto_ao_menu(janela)
 	return (norte and altura or h) + 3
 end
 
--- Perto do fim da tela o menu muda de lado conforme a quantidade de sugestões
--- (com poucas cabe embaixo, com muitas sobe) e pode abrir em cima da assinatura
--- que já estava lá. Quando isso acontece, pede pra assinatura se reposicionar.
-local function reposiciona_se_o_menu_cobriu()
+-- O plugin só posiciona a janela quando ela abre; depois não mexe mais enquanto a
+-- assinatura for a mesma. Só que perto do fim da tela o menu muda de lado conforme
+-- a quantidade de sugestões (com poucas cabe embaixo, com muitas sobe) e pode abrir
+-- em cima dela. Roda toda vez que o menu abre: se cobriu, move a assinatura pro
+-- outro lado do cursor; se lá não couber, pra depois do menu.
+local function tira_de_baixo_do_menu()
 	local assinatura = _LSP_SIG_CFG and _LSP_SIG_CFG.winnr
 	local menu = janela_do_menu()
 	if not (menu and assinatura and vim.api.nvim_win_is_valid(assinatura)) then
 		return
 	end
-	local a1 = vim.api.nvim_win_get_position(assinatura)[1]
-	local a2 = a1 + vim.api.nvim_win_get_height(assinatura) + 1 -- +2 da borda
-	local m1 = vim.api.nvim_win_get_position(menu)[1]
+	-- linhas da tela (a partir de 1) que cada janela ocupa; a da assinatura tem borda
+	local pos = vim.api.nvim_win_get_position(assinatura)
+	local altura = vim.api.nvim_win_get_height(assinatura)
+	local a1, a2 = pos[1] + 1, pos[1] + altura + 2
+	local m1 = vim.api.nvim_win_get_position(menu)[1] + 1
 	local m2 = m1 + vim.api.nvim_win_get_height(menu) - 1
-	if a1 <= m2 and m1 <= a2 then
-		require("lsp_signature").on_UpdateSignature()
+	if a2 < m1 or m2 < a1 then
+		return
 	end
+
+	local cursor = vim.fn.screenpos(0, vim.fn.line("."), vim.fn.col(".")).row
+	local topo_janela = vim.fn.win_screenpos(0)[1]
+	local fim_janela = topo_janela + vim.fn.winheight(0) - 1
+	local topo, h
+	if m2 < cursor then
+		-- menu acima: assinatura abaixo do cursor; sem espaço, acima do menu
+		h = math.min(altura, fim_janela - cursor - 2)
+		topo = cursor + 1
+		if h < 1 then
+			h = math.min(altura, m1 - topo_janela - 2)
+			topo = m1 - h - 2
+		end
+	else
+		-- menu abaixo: assinatura acima do cursor; sem espaço, abaixo do menu
+		h = math.min(altura, cursor - topo_janela - 2)
+		topo = cursor - h - 2
+		if h < 1 then
+			h = math.min(altura, fim_janela - m2 - 2)
+			topo = m2 + 1
+		end
+	end
+	if h < 1 then
+		return
+	end
+	vim.api.nvim_win_set_config(assinatura, {
+		relative = "editor",
+		anchor = "NW",
+		row = topo - 1,
+		col = pos[2],
+		height = h,
+	})
 end
 
 return {
@@ -101,7 +137,7 @@ return {
 				local ok, cmp = pcall(require, "cmp")
 				if ok then
 					cmp.event:on("menu_opened", function()
-						vim.schedule(reposiciona_se_o_menu_cobriu)
+						vim.schedule(tira_de_baixo_do_menu)
 					end)
 				end
 			end,
