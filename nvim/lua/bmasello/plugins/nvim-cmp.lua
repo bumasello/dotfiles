@@ -28,6 +28,12 @@ return {
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
+			window = {
+				-- No máximo 9 linhas: assim o menu cabe abaixo do cursor mesmo com ele
+				-- encostado no scrolloff (8) e não pula pra cima, onde fica a janela da
+				-- assinatura (lsp/lsp-signature.lua usa esse mesmo 9)
+				completion = { max_height = 9 },
+			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
