@@ -71,6 +71,8 @@ alias ga='git add'
 alias gp='git push'
 alias gc='git commit'
 alias gs='git status'
+alias pyms='SQLSERVER_HOST=RDRJ2BIDB02 WSLENV=SQLSERVER_HOST
+  ~/dev/python/PYTHON_MICROSERVICE/PYTHON_MICROSERVICE/Scripts/python.exe'
 # Shell Integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
