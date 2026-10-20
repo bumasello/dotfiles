@@ -20,7 +20,7 @@
         },
         {
             "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
+            "keys": "ctrl+shift+v"
         },
         {
             "id": "Terminal.DuplicatePaneAuto",
