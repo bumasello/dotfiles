@@ -37,7 +37,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "b55decda611755171bc5bf8f4c99603a75de4b41" },
   "roslyn.nvim": { "branch": "main", "commit": "bf1bd4e70bc7068d1b4aebf4ce03cc19a86615be" },
   "snipe.nvim": { "branch": "main", "commit": "d2d196c335919767803f905d573ce66340e33ee6" },
-  "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
+  "telescope.nvim": { "branch": "master", "commit": "40aedd8a68c78a656a10a8d62d80c54af59420fb" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "venv-selector.nvim": { "branch": "main", "commit": "cc4bb3975de8835291f9bb45889e96c6b2795fc4" },
   "vim-ReplaceWithRegister": { "branch": "master", "commit": "a487af6efd1be3fc6fac8da47d00efc9d1f6f724" },
