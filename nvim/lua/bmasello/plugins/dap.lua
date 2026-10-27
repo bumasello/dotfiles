@@ -1,13 +1,14 @@
--- Debug de C# com netcoredbg (mason). Atalhos iguais aos do Visual Studio,
+-- Debug de C# (netcoredbg) e de Java (java-debug, via nvim-jdtls). Atalhos iguais aos do Visual Studio,
 -- pra bater com o que aparece nas aulas: F5 roda/continua, F9 ou <leader>b
 -- marca breakpoint, F10 pula a linha, F11 entra no método, Shift+F11 sai dele.
 -- O F11 só chega aqui porque foi desligado no Windows Terminal (era tela cheia).
--- Quem compila, sobe o netcoredbg e liga o terminal é o easy-dotnet.nvim.
+-- No C#, quem compila, sobe o netcoredbg e liga o terminal é o easy-dotnet.nvim.
+-- No Java, o nvim-jdtls acha as classes com main e oferece cada uma como config.
 
 -- F5 sem sessão aberta compila e debuga o projeto; com sessão, continua
 local function rodar_ou_continuar()
 	local dap = require("dap")
-	if dap.session() then
+	if dap.session() or vim.bo.filetype ~= "cs" then
 		dap.continue()
 	else
 		vim.cmd("Dotnet debug")

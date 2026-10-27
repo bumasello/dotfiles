@@ -17,6 +17,7 @@ return {
 			"python",
 			"rust",
 			"c_sharp",
+			"java",
 			"html",
 			"pug",
 			"css",

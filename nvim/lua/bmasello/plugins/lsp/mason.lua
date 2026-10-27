@@ -35,9 +35,9 @@ return {
 				"rust_analyzer",
 			},
 			automatic_installation = true,
-			-- o roslyn.nvim já sobe o servidor de C#; sem isto o mason-lspconfig sobe
-			-- uma segunda cópia como roslyn_ls e todo diagnóstico aparece em dobro
-			automatic_enable = { exclude = { "roslyn_ls" } },
+			-- o roslyn.nvim e o nvim-jdtls já sobem os servidores de C# e Java; sem isto o
+			-- mason-lspconfig sobe uma segunda cópia de cada e todo diagnóstico aparece em dobro
+			automatic_enable = { exclude = { "roslyn_ls", "jdtls" } },
 		})
 
 		mason_tool_installer.setup({
@@ -50,6 +50,10 @@ return {
 				"roslyn-language-server",
 				"csharpier",
 				"netcoredbg",
+				-- Java: quem sobe o jdtls é o nvim-jdtls; debug e testes entram nele como bundles
+				"jdtls",
+				"java-debug-adapter",
+				"java-test",
 			},
 		})
 	end,
