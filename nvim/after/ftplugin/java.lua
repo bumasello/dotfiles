@@ -6,10 +6,11 @@ local jdtls = require("jdtls")
 local mason = vim.fn.stdpath("data") .. "/mason/packages"
 
 -- Raiz do projeto: wrapper do Maven/Gradle marca o topo de um multi-módulo;
--- sem ele, o pom/build mais próximo ou o .project do Eclipse (projeto de curso);
--- arquivo solto vira projeto na própria pasta.
+-- sem ele, o pom/build mais próximo ou o .project do Eclipse; projeto de curso
+-- sem nada disso é a pasta que tem o src/; arquivo solto vira projeto na própria pasta.
 local root = vim.fs.root(0, { "mvnw", "gradlew" })
 	or vim.fs.root(0, { "pom.xml", "build.gradle", "build.gradle.kts", ".project" })
+	or vim.fs.root(0, { "src" })
 	or vim.fs.root(0, { ".git" })
 	or vim.fn.expand("%:p:h")
 
