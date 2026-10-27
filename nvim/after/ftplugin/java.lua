@@ -30,6 +30,10 @@ jdtls.start_or_attach({
 	name = "jdtls",
 	cmd = {
 		vim.fn.stdpath("data") .. "/mason/bin/jdtls",
+		-- o jdtls de out/2026 só sobe em Java 25 (o script do mason ainda checa 21 e não
+		-- avisa: o servidor sai com código 13). O 25 roda só o servidor; o código do
+		-- projeto compila e roda no 21, o padrão do sistema (runtimes abaixo).
+		"--java-executable=/usr/lib/jvm/java-25-openjdk/bin/java",
 		"--jvm-arg=-javaagent:" .. mason .. "/jdtls/lombok.jar",
 		"-data",
 		workspace,
@@ -39,6 +43,15 @@ jdtls.start_or_attach({
 	init_options = { bundles = bundles },
 	settings = {
 		java = {
+			configuration = {
+				runtimes = {
+					{ name = "JavaSE-21", path = "/usr/lib/jvm/java-21-openjdk", default = true },
+					{ name = "JavaSE-25", path = "/usr/lib/jvm/java-25-openjdk" },
+				},
+			},
+			-- projeto sem Maven/Gradle (o formato do curso): o código mora em src/;
+			-- sem isto o jdtls toma a raiz como fonte e acusa todo "package" como errado
+			project = { sourcePaths = { "src" } },
 			signatureHelp = { enabled = true },
 			inlayHints = { parameterNames = { enabled = "all" } },
 			referencesCodeLens = { enabled = true },

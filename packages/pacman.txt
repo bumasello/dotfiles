@@ -10,8 +10,11 @@ fzf
 gedit
 git
 github-cli
+jdk21-openjdk
+jdk25-openjdk
 less
 libaio
+maven
 neovim
 nodejs
 npm
