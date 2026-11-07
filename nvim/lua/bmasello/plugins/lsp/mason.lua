@@ -33,6 +33,7 @@ return {
 				"pyright",
 				"ruff",
 				"rust_analyzer",
+				"lemminx", -- XML: formata e valida pom.xml pelo schema do Maven
 			},
 			automatic_installation = true,
 			-- o roslyn.nvim e o nvim-jdtls já sobem os servidores de C# e Java; sem isto o

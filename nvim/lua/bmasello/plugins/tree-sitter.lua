@@ -18,6 +18,7 @@ return {
 			"rust",
 			"c_sharp",
 			"java",
+			"xml",
 			"html",
 			"pug",
 			"css",
