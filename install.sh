@@ -55,7 +55,6 @@ link ~/.zshrc            terminal/.zshrc
 link ~/.p10k.zsh         terminal/.p10k.zsh
 link ~/.tmux.conf        terminal/.tmux.conf
 link ~/.config/nvim      nvim
-link ~/.config/ghostty   ghostty
 
 passo "Git"
 # cópia, não link: o git config --global reescreve o arquivo e quebraria o link
