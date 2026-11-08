@@ -18,5 +18,14 @@ snap "$WIN/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalS
                                                      windows/windows-terminal-settings.json
 snap "$WIN/AppData/Roaming/AltSnap/AltSnap.ini"      windows/altsnap.ini
 
+# Editor que grava arquivo novo por cima (sed -i, write-and-rename) troca o
+# symlink por arquivo comum, e o sync para de ver as mudanças sem avisar.
+# Se isso acontecer, o arquivo vivo vira a versão do repo e o link volta.
+relink() { [ -f "$1" ] && [ ! -L "$1" ] && cp -p "$1" "$2" && ln -sf ~/dotfiles/"$2" "$1"; }
+
+relink ~/.zshrc                                      terminal/.zshrc
+relink ~/.p10k.zsh                                   terminal/.p10k.zsh
+relink ~/.tmux.conf                                  terminal/.tmux.conf
+
 mkdir -p packages
 pacman -Qqe > packages/pacman.txt 2>/dev/null
