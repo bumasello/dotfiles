@@ -71,8 +71,7 @@ alias ga='git add'
 alias gp='git push'
 alias gc='git commit'
 alias gs='git status'
-alias pyms='SQLSERVER_HOST=RDRJ2BIDB02 WSLENV=SQLSERVER_HOST
-  ~/dev/python/PYTHON_MICROSERVICE/PYTHON_MICROSERVICE/Scripts/python.exe'
+alias pyms='SQLSERVER_DESLIGADO=true WSLENV=SQLSERVER_DESLIGADO ~/dev/python/PYTHON_MICROSERVICE/PYTHON_MICROSERVICE/Scripts/python.exe'
 # Shell Integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
@@ -123,3 +122,45 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 
 # ferramentas instaladas com `dotnet tool install -g` (o servidor do easy-dotnet.nvim, por ex.)
 export PATH="$HOME/.dotnet/tools:$PATH"
+
+nmvn ()
+{
+
+  local nome_proj="$1"
+  local resp
+  
+  if [[ -z "$nome_proj" ]]; then
+    echo "Precisa informar o nome do projeto." >&2
+    echo "Uso: nmvn <nome_projeto>" >&2
+    return 1
+  fi
+
+  if [[ "$nome_proj" == */* ]]; then
+    echo "O nome do projeto não pode conter barras ('/')" >&2
+    return 1
+  fi
+
+  if [[ -d "$nome_proj" ]]; then
+    echo "Um projeto com o nome '$PWD/$nome_proj' já existe. Deseja sobrescrever? [S/N]" >&2
+    read -r -k 1 resp
+    echo ""
+
+    if [[ "$resp" =~ ^[sS]$ ]]; then
+      echo "Apagando projeto..."
+      rm -rf "$nome_proj"
+
+    else
+      echo "Operação cancelada" >&2
+      return 1
+    fi
+  fi
+
+  mvn archetype:generate \
+  -DgroupId=io.github.bumasello -DartifactId="$nome_proj" \
+  -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 \
+  -DinteractiveMode=false &&
+  cd "$nome_proj" || return 1
+  nvim . 
+  return 0
+
+}
