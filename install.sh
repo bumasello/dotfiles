@@ -85,6 +85,23 @@ else
   aviso "sem acesso a $CLAUDE_REPO (chave SSH no GitHub?) — pulei"
 fi
 
+passo "Segundo Cérebro (vault, repo privado)"
+VAULT=$WIN/SegundoCerebro
+if [ ! -d /mnt/c ]; then
+  ok "não é WSL, pulei"
+elif [ -d "$VAULT/.git" ]; then
+  ok "$VAULT já é o repo segundo-cerebro"
+elif [ -e "$VAULT" ]; then
+  aviso "$VAULT existe sem git; não mexi (junte à mão com o repo segundo-cerebro)"
+elif git clone -q git@github.com:bumasello/segundo-cerebro.git "$VAULT"; then
+  # NTFS mostra tudo como 777; sem isso o git acusa todo arquivo como alterado
+  git -C "$VAULT" config core.fileMode false
+  git -C "$VAULT" config core.autocrlf false
+  ok "$VAULT clonado (abra a pasta como vault no Obsidian)"
+else
+  aviso "sem acesso ao repo segundo-cerebro (chave SSH no GitHub?) — pulei"
+fi
+
 passo "WSL"
 if [ -d /mnt/c ]; then
   if cmp -s "$D/wsl/wsl.conf" /etc/wsl.conf; then
