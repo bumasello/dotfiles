@@ -35,8 +35,8 @@ autoload -U compinit && compinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # Keybindings
 bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
 bindkey '^[w' kill-region
 # History
 HISTSIZE=5000
