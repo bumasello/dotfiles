@@ -37,6 +37,11 @@ autoload -U compinit && compinit
 bindkey -e
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
+# setas também filtram pelo que já foi digitado (algo no Windows entrega o Ctrl+P como seta)
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+bindkey '^[OA' history-beginning-search-backward
+bindkey '^[OB' history-beginning-search-forward
 bindkey '^[w' kill-region
 # History
 HISTSIZE=5000
