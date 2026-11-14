@@ -17,6 +17,8 @@ snap ~/.config/git/ignore                            git/ignore
 snap "$WIN/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json" \
                                                      windows/windows-terminal-settings.json
 snap "$WIN/AppData/Roaming/AltSnap/AltSnap.ini"      windows/altsnap.ini
+snap "$WIN/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/autohotkey.ahk" \
+                                                     windows/autohotkey.ahk
 
 # Editor que grava arquivo novo por cima (sed -i, write-and-rename) troca o
 # symlink por arquivo comum, e o sync para de ver as mudanças sem avisar.
