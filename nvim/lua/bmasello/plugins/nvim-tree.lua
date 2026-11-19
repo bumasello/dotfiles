@@ -33,13 +33,17 @@ return {
 					},
 				},
 			},
-			-- disable window_picker for
-			-- explorer to work well with
-			-- window splits
+			-- window_picker asks which split to open the file in
+			-- when there is more than one window
 			actions = {
 				open_file = {
 					window_picker = {
-						enable = false,
+						enable = true,
+						chars = "ASDFJKL",
+						exclude = {
+							filetype = { "notify", "qf", "diff", "fugitive", "fugitiveblame" },
+							buftype = { "nofile", "terminal", "help" },
+						},
 					},
 				},
 			},
