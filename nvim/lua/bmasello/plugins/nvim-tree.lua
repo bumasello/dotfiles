@@ -1,6 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "s1n7ax/nvim-window-picker" },
 	config = function()
 		local nvimtree = require("nvim-tree")
 
@@ -39,11 +39,21 @@ return {
 				open_file = {
 					window_picker = {
 						enable = true,
-						chars = "ASDFJKL",
-						exclude = {
-							filetype = { "notify", "qf", "diff", "fugitive", "fugitiveblame" },
-							buftype = { "nofile", "terminal", "help" },
-						},
+						-- floating letters from nvim-window-picker instead of the statusline
+						picker = function()
+							-- only the tree is open (e.g. `nvim .`): return -1 so
+							-- nvim-tree opens the file in a new split by itself
+							local has_target = vim.iter(vim.api.nvim_tabpage_list_wins(0)):any(function(win)
+								local buf = vim.api.nvim_win_get_buf(win)
+								return vim.api.nvim_win_get_config(win).relative == ""
+									and vim.bo[buf].filetype ~= "NvimTree"
+									and not vim.tbl_contains({ "nofile", "terminal", "help" }, vim.bo[buf].buftype)
+							end)
+							if not has_target then
+								return -1
+							end
+							return require("window-picker").pick_window()
+						end,
 					},
 				},
 			},
